@@ -74,12 +74,18 @@ void mainLoop(double spheresRadius, double gridSize, std::string lattice, std::s
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
     // Loading shader files
+    
+     /* CHANGE THESE PATHS TO THE PATH ON YOUR MACHINE */
+    
     GLuint programID = LoadShaders( "/Users/Metius/Desktop/VolumesFiller/Shaders/InstanceShading.vertexshader", "/Users/Metius/Desktop/VolumesFiller/Shaders/StandardShading.fragmentshader" );
     
     //loading object and creating vectors of informations
     std::vector<glm::vec3> verticesZ;
     std::vector<glm::vec3> normalsZ;
     double maxObject;
+    
+    /* CHANGE THESE PATHS TO THE PATH ON YOUR MACHINE */
+    
     if(mesh == "Armadillo"){
         loadOFFComplex("/Users/Metius/Desktop/VolumesFiller/OFF_Models/armadillo.off", verticesZ, normalsZ,  maxObject);
     }else if(mesh == "Genus3"){
@@ -91,9 +97,6 @@ void mainLoop(double spheresRadius, double gridSize, std::string lattice, std::s
     }else{
         loadOFFComplex("/Users/Metius/Desktop/VolumesFiller/OFF_Models/hiressphere.off", verticesZ, normalsZ,  maxObject);
     }
-    
-//    double spheresRadius = 0.064;
-//    double gridSize = 3.0;
     
     //convertOFF("/Users/Metius/Desktop/Bachelor\ project/Volumes/Volumes/Volumes/genus3.off");
     std::vector<glm::vec3> collisionVertices = verticesZ;
@@ -116,6 +119,9 @@ void mainLoop(double spheresRadius, double gridSize, std::string lattice, std::s
     printf("max edge length: %f \n", maxObject);
     double divisor;
     //loading different meshes depending on sphere size
+    
+     /* CHANGE THESE PATHS TO THE PATH ON YOUR MACHINE */
+    
     if(spheresRadius > 0.1){
         loadOFF("/Users/Metius/Desktop/VolumesFiller/OFF_Models/hiressphere.off", sphere_vertices, sphere_normals);
         divisor = 5.0;
